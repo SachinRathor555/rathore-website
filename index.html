@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>राठौर टेलर्स — Rathore Tailors | Talab Shahi, Kosikalan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#7a1313;
+    --maroon-dk:#4c0c0c;
+    --gold:#d9a531;
+    --cream:#fbf3e4;
+    --ink:#231a14;
+    --line: rgba(35,26,20,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;line-height:1.55;overflow-x:hidden;}
+  h1,h2,h3,.brand{font-family:'Playfair Display',serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  section{padding:80px 0;}
+
+  .stitch{
+    height:3px;background-image:repeating-linear-gradient(90deg, var(--gold) 0 10px, transparent 10px 20px);
+    margin:0 auto;
+  }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(251,243,228,0.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1180px;margin:0 auto;}
+  .brand{font-size:22px;font-weight:700;color:var(--maroon);}
+  .brand span{color:var(--gold);}
+  .nav-links{display:flex;gap:30px;font-size:14px;}
+  .nav-links a{position:relative;padding-bottom:4px;}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .call-btn{background:var(--maroon);color:#fff;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;}
+  .call-btn:hover{background:var(--maroon-dk);}
+
+  .hero{
+    position:relative;min-height:86vh;display:flex;align-items:center;
+    background:
+      radial-gradient(circle at 80% 15%, rgba(217,165,49,0.25), transparent 50%),
+      linear-gradient(150deg, var(--maroon-dk) 0%, var(--maroon) 60%);
+    color:#fff;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 14px);
+  }
+  .hero-inner{max-width:1180px;margin:0 auto;width:100%;padding:60px 28px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;position:relative;z-index:2;}
+  .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:inline-block;border-bottom:1px solid rgba(217,165,49,0.45);padding-bottom:6px;}
+  .hero-text h1{font-size:clamp(36px,5.4vw,58px);font-weight:600;line-height:1.12;margin-bottom:20px;}
+  .hero-text h1 em{color:var(--gold);font-style:italic;}
+  .hero-text p{font-size:16px;max-width:440px;opacity:0.88;margin-bottom:30px;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--maroon-dk);padding:15px 28px;font-weight:700;font-size:14px;border-radius:30px;transition:transform .25s ease;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.5);color:#fff;padding:14px 26px;font-weight:600;font-size:14px;border-radius:30px;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.1);}
+
+  .hero-photo-wrap{position:relative;display:flex;justify-content:center;}
+  .hero-photo{
+    width:88%;border-radius:8px;box-shadow:0 30px 60px rgba(0,0,0,0.4);
+    border:4px solid rgba(217,165,49,0.6);transform:rotate(-1.5deg);
+  }
+  .badge-floating{
+    position:absolute;bottom:-18px;left:0;background:var(--gold);color:var(--maroon-dk);
+    padding:14px 20px;border-radius:8px;font-family:'Playfair Display',serif;
+    font-weight:700;font-size:14px;box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    transform:rotate(2deg);
+  }
+
+  .section-head{text-align:center;max-width:600px;margin:0 auto 50px;}
+  .section-head .eyebrow{color:var(--maroon);border-color:rgba(122,19,19,0.3);}
+  .section-head h2{font-size:clamp(28px,4vw,38px);font-weight:600;color:var(--maroon-dk);}
+  .section-head p{font-size:14.5px;opacity:0.7;margin-top:10px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;}
+  .service-card{
+    background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+    display:flex;flex-direction:column;transition:box-shadow .3s ease, transform .3s ease;
+  }
+  .service-card:hover{box-shadow:0 20px 45px rgba(122,19,19,0.12);transform:translateY(-4px);}
+  .service-top{background:var(--maroon);color:#fff;padding:26px 28px;display:flex;align-items:center;gap:16px;}
+  .service-icon{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--maroon-dk);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+  .service-top h3{font-size:19px;font-weight:600;}
+  .service-top span{font-size:12px;opacity:0.85;}
+  .service-body{padding:22px 28px 26px;}
+  .service-body ul{list-style:none;font-size:13.5px;opacity:0.8;}
+  .service-body li{padding:6px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;}
+  .service-body li:last-child{border-bottom:none;}
+  .service-body .from{color:var(--maroon);font-weight:700;}
+
+  .tailors{background:#fff;}
+  .tailor-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;}
+  .tailor-card{text-align:center;padding:36px 24px;border:1px solid var(--line);border-radius:8px;}
+  .tailor-photo{width:110px;height:110px;border-radius:50%;margin:0 auto 18px;object-fit:cover;border:3px solid var(--gold);}
+  .tailor-card h3{font-size:19px;margin-bottom:4px;color:var(--maroon-dk);}
+  .tailor-card .role{font-size:13px;color:var(--maroon);font-weight:600;margin-bottom:10px;}
+  .tailor-card p{font-size:13.5px;opacity:0.7;}
+
+  .booking{
+    background:linear-gradient(150deg, var(--maroon-dk), var(--maroon));
+    color:#fff;
+  }
+  .booking .section-head h2, .booking .section-head p{color:#fff;}
+  .booking .section-head .eyebrow{color:var(--gold);border-color:rgba(217,165,49,0.4);}
+  .booking-box{
+    max-width:560px;margin:0 auto;background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:34px;
+    backdrop-filter:blur(4px);
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  .form-row.full{grid-template-columns:1fr;}
+  .booking-box label{font-size:12px;letter-spacing:0.5px;opacity:0.8;display:block;margin-bottom:6px;}
+  .booking-box input, .booking-box select, .booking-box textarea{
+    width:100%;padding:12px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.25);
+    background:rgba(255,255,255,0.08);color:#fff;font-family:'Outfit',sans-serif;font-size:14px;
+  }
+  .booking-box input::placeholder, .booking-box textarea::placeholder{color:rgba(255,255,255,0.5);}
+  .booking-box textarea{resize:vertical;min-height:70px;}
+  .booking-box option{color:#000;}
+  .submit-wa{
+    width:100%;margin-top:8px;background:#25D366;color:#fff;border:none;padding:15px;
+    border-radius:30px;font-weight:700;font-size:14px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .submit-wa:hover{background:#1fb958;}
+
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .gallery-item{aspect-ratio:1;border-radius:6px;overflow:hidden;background:linear-gradient(150deg,#f0e2c2,#e3cd9a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-style:italic;color:var(--maroon);opacity:0.6;font-size:13px;text-align:center;padding:10px;}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;}
+
+  .testimonials{background:#fff;}
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .test-card{padding:26px;border:1px solid var(--line);border-radius:8px;background:var(--cream);}
+  .test-card .stars{color:var(--gold);font-size:14px;margin-bottom:10px;}
+  .test-card p{font-size:13.5px;opacity:0.8;margin-bottom:14px;font-style:italic;}
+  .test-card .name{font-weight:600;font-size:13.5px;color:var(--maroon-dk);}
+
+  footer{background:var(--ink);color:#f0e6d6;padding:60px 0 26px;}
+  .foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+  footer h3{font-size:17px;margin-bottom:14px;color:var(--gold);}
+  footer p, footer a, footer li{font-size:13.5px;opacity:0.8;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:9px;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.12);padding-top:20px;font-size:12px;opacity:0.55;text-align:center;}
+
+  .wa-float{position:fixed;bottom:24px;right:24px;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 8px 24px rgba(0,0,0,0.3);z-index:60;transition:transform .25s ease;}
+  .wa-float:hover{transform:scale(1.08);}
+
+  @media(max-width:880px){
+    .hero-inner{grid-template-columns:1fr;text-align:center;}
+    .hero-text p{margin-left:auto;margin-right:auto;}
+    .hero-cta{justify-content:center;}
+    .hero-photo-wrap{order:-1;}
+    .nav-links{display:none;}
+    .services-grid, .tailor-grid, .test-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .form-row{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">राठौर <span>टेलर्स</span></div>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">Hamare Bare Mein</a>
+      <a href="#booking">Book Now</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-btn" href="tel:+918266904031">📞 Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow">Talab Shahi, Kosikalan</span>
+      <h1>Fit jo <em>perfect</em> baithe,<br>silai jo bole quality.</h1>
+      <p>राठौर टेलर्स — Pant-Shirt aur Kurta-Pajama ki trusted specialist shop. Apni measurement book karein, design batayein, hum design ko zindagi mein utaarenge.</p>
+      <div class="hero-cta">
+        <a href="#booking" class="btn-primary">📏 Measurement Book Karein</a>
+        <a href="https://wa.me/918266904031" target="_blank" class="btn-ghost">💬 WhatsApp Karein</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="images/banner1.jpeg" alt="Rathore Tailors Shop Banner">
+      <div class="badge-floating">32+ Saal ka<br>Bharosa</div>
+    </div>
+  </div>
+</section>
+<div class="stitch"></div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Hamari Specialty</span>
+      <h2>Services</h2>
+      <p>Har piece custom measurement ke saath, ghar jaisi finishing.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-top">
+          <div class="service-icon">👔</div>
+          <div>
+            <h3>Pant-Shirt Specialist</h3>
+            <span>by Umesh Rathore</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <ul>
+            <li><span>Formal Shirt Stitching</span><span class="from">From ₹350</span></li>
+            <li><span>Formal Pant Stitching</span><span class="from">From ₹450</span></li>
+            <li><span>Office Uniform Sets</span><span class="from">From ₹700</span></li>
+            <li><span>Alteration / Fitting</span><span class="from">From ₹100</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-top">
+          <div class="service-icon">🪡</div>
+          <div>
+            <h3>Kurta-Pajama Specialist</h3>
+            <span>by Bheem Singh Rathore</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <ul>
+            <li><span>Daily Wear Kurta-Pajama</span><span class="from">From ₹500</span></li>
+            <li><span>Festive / Wedding Kurta</span><span class="from">From ₹900</span></li>
+            <li><span>Nehru Jacket Stitching</span><span class="from">From ₹600</span></li>
+            <li><span>Alteration / Fitting</span><span class="from">From ₹100</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="tailors">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Hamare Karigar</span>
+      <h2>Hamare Bare Mein</h2>
+      <p>Do specialist, ek hi chhat ke neeche — har style ka kaam.</p>
+    </div>
+    <div class="tailor-grid">
+      <div class="tailor-card">
+        <img class="tailor-photo" src="images/owner-umesh.jpeg" alt="Umesh Rathore">
+        <h3>उमेश राठौर</h3>
+        <div class="role">Pant-Shirt Specialist</div>
+        <p>Formal aur office wear mein expertise — perfect fitting, sharp finishing.</p>
+      </div>
+      <div class="tailor-card">
+        <img class="tailor-photo" src="images/owner-umesh.jpeg" alt="Bheem Singh Rathore" style="opacity:0.92;">
+        <h3>भीमसिंह राठौर</h3>
+        <div class="role">Kurta-Pajama Specialist</div>
+        <p>Ethnic aur festive wear ke master — traditional touch, modern fit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="booking">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Asaan Booking</span>
+      <h2>Apni Measurement Book Karein</h2>
+      <p>Form bharein — details seedhe WhatsApp par humare paas pahunch jaayengi.</p>
+    </div>
+    <div class="booking-box">
+      <div class="form-row">
+        <div>
+          <label>Aapka Naam</label>
+          <input type="text" id="bName" placeholder="Naam likhein">
+        </div>
+        <div>
+          <label>Mobile Number</label>
+          <input type="tel" id="bPhone" placeholder="10-digit number">
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Service</label>
+          <select id="bService">
+            <option>Pant-Shirt Stitching</option>
+            <option>Kurta-Pajama Stitching</option>
+            <option>Alteration / Fitting</option>
+            <option>Uniform / Bulk Order</option>
+          </select>
+        </div>
+        <div>
+          <label>Preferred Date</label>
+          <input type="date" id="bDate">
+        </div>
+      </div>
+      <div class="form-row full">
+        <div>
+          <label>Extra Details (fabric, design, etc.)</label>
+          <textarea id="bNotes" placeholder="Jaise: Cotton kurta chahiye, white color"></textarea>
+        </div>
+      </div>
+      <button class="submit-wa" id="bookBtn">💬 WhatsApp par Bhejein</button>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Hamara Kaam</span>
+      <h2>Gallery</h2>
+      <p>Recent stitching aur design samples.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">Formal Shirt</div>
+      <div class="gallery-item">Festive Kurta</div>
+      <div class="gallery-item">Office Pant</div>
+      <div class="gallery-item">Nehru Jacket</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Customer Bharosa</span>
+      <h2>Log Kya Kehte Hain</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Fitting bilkul perfect aayi, time par delivery bhi mil gayi."</p>
+        <div class="name">— Rajesh, Kosikalan</div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Kurta-pajama ki finishing bahut achi thi, shaadi mein sabne tareef ki."</p>
+        <div class="name">— Sandeep, Mathura</div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Office uniform set order kiya tha, quality aur price dono best."</p>
+        <div class="name">— Mahesh, Talab Shahi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>राठौर टेलर्स</h3>
+        <p>Talab Shahi, Kosikalan ki bharosemand tailoring shop. Pant-Shirt aur Kurta-Pajama dono mein specialist.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#booking">Book Now</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li>📍 तालाब शाही, कोसीकलां</li>
+          <li>📞 <a href="tel:+918266904031">82669 04031</a></li>
+          <li>🕘 Daily 9:00 AM – 8:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 राठौर टेलर्स. Sabhi adhikar surakshit.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/918266904031?text=Namaste! Mujhe stitching ke baare mein jaankari chahiye." target="_blank" title="WhatsApp par baat karein">💬</a>
+
+<script>
+const WHATSAPP_NUMBER = "918266904031";
+
+document.getElementById('bookBtn').addEventListener('click', ()=>{
+  const name = document.getElementById('bName').value.trim();
+  const phone = document.getElementById('bPhone').value.trim();
+  const service = document.getElementById('bService').value;
+  const date = document.getElementById('bDate').value;
+  const notes = document.getElementById('bNotes').value.trim();
+
+  if(!name || !phone){
+    alert('Kripya naam aur mobile number bharein.');
+    return;
+  }
+
+  let msg = `Namaste! Main measurement/order book karna chahta hoon.%0A%0A`;
+  msg += `Naam: ${name}%0A`;
+  msg += `Mobile: ${phone}%0A`;
+  msg += `Service: ${service}%0A`;
+  if(date) msg += `Preferred Date: ${date}%0A`;
+  if(notes) msg += `Details: ${notes}%0A`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+});
+</script>
+</body>
+</html>
